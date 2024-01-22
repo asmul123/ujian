@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>File Skema
+        </title>
+
+        <!-- ========== COMMON STYLES ========== -->
+        <link rel="stylesheet" href="../Theme/css/bootstrap.css" media="screen" >
+        <link rel="stylesheet" href="../Theme/css/font-awesome.min.css" media="screen" >
+        <link rel="stylesheet" href="../Theme/css/animate-css/animate.min.css" media="screen" >
+        <link rel="stylesheet" href="../Theme/css/lobipanel/lobipanel.min.css" media="screen" >
+
+        <!-- ========== PAGE STYLES ========== -->
+        <link rel="stylesheet" href="../Theme/css/prism/prism.css" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+        <link rel="stylesheet" href="../Theme/css/ladda/ladda-themeless.min.css" media="screen" >
+        <link rel="stylesheet" href="../Theme/css/iziModal/iziModal.min.css" media="screen" >
+        <link rel="stylesheet" href="../Theme/css/sweet-alert/sweetalert.css" media="screen" >
+
+        <!-- ========== THEME CSS ========== -->
+        <link rel="stylesheet" href="../Theme/css/main.css" media="screen" >
+
+        <!-- ========== MODERNIZR ========== -->
+        <script src="../Theme/js/modernizr/modernizr.min.js"></script>
+    </head>
+    <body class="top-navbar-fixed">
+        <div class="content-wrapper">
+            <div class="content-container">
+                <div class="main-page">
+                    <section class="section">
+                        <div class="container-fluid">
+                            <div class="row mt-15">
+                                <div class="col-md-12">
+                                    <div class="panel">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                <h5>File <small>Tidak ditemukan</small></h5>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>Silahkan keluar dari halaman ini</p>
+                                            <div class="text-center">
+                                                <button action="action" onclick="window.history.go(-1); return false;" type="submit" class="btn btn-warning btn-animated btn-wide modal-14-trigger">Kembali</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col-md-6 -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== COMMON JS FILES ========== -->
+        <script src="../Theme/js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="../Theme/js/jquery-ui/jquery-ui.min.js"></script>
+        <script src="../Theme/js/bootstrap/bootstrap.min.js"></script>
+        <script src="../Theme/js/pace/pace.min.js"></script>
+        <script src="../Theme/js/lobipanel/lobipanel.min.js"></script>
+        <script src="../Theme/js/iscroll/iscroll.js"></script>
+
+        <!-- ========== PAGE JS FILES ========== -->
+        <script src="../Theme/js/prism/prism.js"></script>
+        <script src="../Theme/js/iziModal/iziModal.min.js"></script>
+        <script src="../Theme/js/sweet-alert/sweetalert.min.js"></script>
+
+        <!-- ========== THEME JS ========== -->
+        <script src="../Theme/js/main.js"></script>
+
+        <script type="text/javascript">
+            $(function($) {
+                $(window).on('load', function() {
+                    swal({
+                        type: "Gagal",
+                        title: "File Tidak ditemukan",
+                        confirmButtonColor: "RED",
+                        text: "Silahkan keluar dari halaman ini!",
+                        confirmButtonText: "Ok"
+                    });
+                });
+                $('.modal-14-trigger').on('click', function(){
+                    swal({
+                        type: "Gagal",
+                        title: "File Tidak ditemukan",
+                        confirmButtonColor: "RED",
+                        text: "Silahkan keluar dari halaman ini!",
+                        confirmButtonText: "Ok"
+                    });
+                });
+            });
+        </script>
+
+        <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
+    </body>
+</html>
