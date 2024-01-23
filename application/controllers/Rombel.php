@@ -40,7 +40,7 @@ class Rombel extends CI_Controller
 	{
 		$id = $this->session->userdata('tipeuser');
 		$data['menu'] = $this->M_Setting->getmenu1($id);
-		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Asesi'])->row()->id_menus;
+		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Rombel'])->row()->id_menus;
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar', $data);
@@ -84,7 +84,7 @@ class Rombel extends CI_Controller
 		$id = $this->session->userdata('tipeuser');
 		$data['rombel'] = $this->Mrombel->getthisrombel($id);
 		$data['menu'] = $this->M_Setting->getmenu1($id);
-		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Asesi'])->row()->id_menus;
+		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Rombel'])->row()->id_menus;
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar', $data);
