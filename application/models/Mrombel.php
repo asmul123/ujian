@@ -10,6 +10,14 @@ class Mrombel extends CI_Model
         return $this->db->get()->result();
     }
 
+    function getthisrombel($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_rombel');
+        $this->db->where('id', $id);
+        return $this->db->get()->row();
+    }
+
     function addrombel($data)
     {
         $this->db->insert('tb_rombel', $data);
@@ -17,13 +25,13 @@ class Mrombel extends CI_Model
 
     function delrombel($id)
     {
-        $this->db->where('rombel', $id);
+        $this->db->where('id', $id);
         $this->db->delete('tb_rombel');
     }
 
-    function editrombel($data, $rombel)
+    function editrombel($data, $id)
     {
-        $this->db->where('rombel', $rombel);
+        $this->db->where('id', $id);
         $this->db->update('tb_rombel', $data);
     }
 

@@ -18,8 +18,8 @@
                         <i>( * ) Wajib di Isi</i>
                         <div class="form-group has-feedback">
                             <label for="name5">Nama Rombel*</label>
-                            <input type="text" class="form-control" name="rombel" required value="<?= $rombel ?>">
-                            <input type="hidden" class="form-control" name="rombel_lama" value="<?= $rombel ?>">
+                            <input type="text" class="form-control" name="rombel" required value="<?= $rombel->rombel ?>">
+                            <input type="hidden" class="form-control" name="id" value="<?= $rombel->id ?>">
                             <span class="fa fa-pencil form-control-feedback"></span>
                             <span class="help-block">Masukkan nama Rombel</span>
                         </div>

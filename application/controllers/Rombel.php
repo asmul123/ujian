@@ -74,15 +74,15 @@ class Rombel extends CI_Controller
 
 		$this->Mrombel->delrombel($id);
 		$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
-		<strong>Sukses!</strong> Berhasil Menghapus Data Asesor.
+		<strong>Sukses!</strong> Berhasil Menghapus Data Rombel.
                                         		</div>');
-		redirect(base_url('asesi'));
+		redirect(base_url('rombel'));
 	}
 
-	public function ubah($rombel)
+	public function ubah($id)
 	{
 		$id = $this->session->userdata('tipeuser');
-		$data['rombel'] = $rombel;
+		$data['rombel'] = $this->Mrombel->getthisrombel($id);
 		$data['menu'] = $this->M_Setting->getmenu1($id);
 		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Asesi'])->row()->id_menus;
 
@@ -95,13 +95,13 @@ class Rombel extends CI_Controller
 	public function edt_process()
 	{
 		$rombel = $this->input->post('rombel', true);
-		$rombel_lama = $this->input->post('rombel_lama', true);
+		$id = $this->input->post('id', true);
 		$cekRombel = $this->Mrombel->cekRombel($rombel);
 		if ($cekRombel == 'kosong') {
 			$data = array(
 				'rombel' => $rombel
 			);
-			$this->Mrombel->editrombel($data, $rombel_lama);
+			$this->Mrombel->editrombel($data, $id);
 			$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
 																<strong>Sukses!</strong> Berhasil Menambahkan Data Rombel.
 																</div>');
