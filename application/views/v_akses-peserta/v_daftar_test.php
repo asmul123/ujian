@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Daftar Test Ujian Sekolah</h2>
-                <p class="sub-title">UJIAN - SMK NEGERI 1 GARUT</p>
+                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -55,7 +55,7 @@
                                 <tbody>
                                     <?php $no = 1;
                                     foreach ($daftartest as $data) :
-					$now = date('Y-m-d H:i:s');		
+                                        $now = date('Y-m-d H:i:s');
                                     ?>
                                         <tr>
                                             <td class="text-center"><?= $no++; ?></td>
@@ -65,7 +65,7 @@
                                             <td><?= $data->finish_at ?></td>
                                             <td class="text-center">
                                                 <?php
-                                                
+
                                                 $status_test = $this->Maksespeserta->gettestpeserta($idpeserta, $data->idtest)->row();
                                                 if ($status_test) {
                                                     if ($status_test->status_test == 2) {
@@ -86,8 +86,8 @@
                                                 } ?>
                                             </td>
                                         </tr>
-                                    <?php 
-					endforeach; ?>
+                                    <?php
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

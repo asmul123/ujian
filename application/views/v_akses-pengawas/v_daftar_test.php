@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Daftar Test Ujian Sekolah</h2>
-                <p class="sub-title">UJIAN - SMK NEGERI 1 GARUT</p>
+                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -66,8 +66,8 @@
                                             <td><?= $data['finish_at'] ?></td>
                                             <td><a href="<?= base_url('aksespengawas/list_test/') . $data['idtest'] ?>" class="btn btn-success"><i class="fa fa-list"></i> Lihat</a></td>
                                         </tr>
-                                    <?php 
-					endforeach; ?>
+                                    <?php
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

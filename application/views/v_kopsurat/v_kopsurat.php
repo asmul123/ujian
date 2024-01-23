@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Kop Surat</h2>
-                <p class="sub-title">UJIAN - SMK NEGERI 1 GARUT</p>
+                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">

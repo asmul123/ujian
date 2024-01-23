@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UJIAN SMK NEGERI 1 GARUT</title>
+    <title>UJIAN SMKS YPPT GARUT</title>
     <link rel="shortcut icon" href="<?php echo base_url() ?>assets/Favicon/favicon.ico">
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Theme/css/bootstrap.min.css" media="screen">
