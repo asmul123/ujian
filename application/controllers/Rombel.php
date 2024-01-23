@@ -36,42 +36,10 @@ class Rombel extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
-	public function generateakun()
-	{
-		$dataasesi = $this->Masesi->getasesi();
-		$berhasil = 0;
-		$gagal = 0;
-		foreach ($dataasesi as $da) :
-			$cekAkun = $this->Masesi->cekAkun($da->id_user);
-			if ($cekAkun == "kosong") {
-				$data2 = array(
-					'username' => $da->no_peserta,
-					'nama' => $da->nama,
-					'password' => md5($da->no_peserta),
-					'user_level' => '3'
-				);
-				$this->Masesi->adduser($data2);
-				$user = $this->Masesi->cekIdUser($da->no_peserta);
-				$data = array(
-					'id_user' => $user->id
-				);
-				$this->Masesi->editasesi($data, $da->id);
-				$berhasil++;
-			} else {
-				$gagal++;
-			}
-		endforeach;
-		$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
-																<strong>Sukses!</strong> Berhasil Menambahkan ' . $berhasil . ' Akun Asesi, ' . $gagal . ' Akun dilewati.
-																</div>');
-		redirect(base_url('asesi'));
-	}
-
 	public function tambah()
 	{
 		$id = $this->session->userdata('tipeuser');
 		$data['menu'] = $this->M_Setting->getmenu1($id);
-		$data['tahunaktif'] = $this->Mtahunaktif->getAll();
 		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Asesi'])->row()->id_menus;
 
 		$this->load->view('template/header');
@@ -111,103 +79,38 @@ class Rombel extends CI_Controller
 		redirect(base_url('asesi'));
 	}
 
-	public function ubah($idasesi)
+	public function ubah($rombel)
 	{
 		$id = $this->session->userdata('tipeuser');
-		$data['dataasesi'] = $this->Masesi->getasesidetail($idasesi);
-		$data['tahunaktif'] = $this->Mtahunaktif->getAll();
-		$data['idasesi'] = $idasesi;
+		$data['rombel'] = $rombel;
 		$data['menu'] = $this->M_Setting->getmenu1($id);
 		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Asesi'])->row()->id_menus;
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar', $data);
-		$this->load->view('v_asesi/v_asesi-edit', $data);
+		$this->load->view('v_rombel/v_rombel-edit', $data);
 		$this->load->view('template/footer');
 	}
 
 	public function edt_process()
 	{
-		$no_peserta = $this->input->post('no_peserta', true);
-		$kelas = $this->input->post('kelas', true);
-		$tahun_aktif = $this->input->post('tahun_aktif', true);
-		$foto_lama = $this->input->post('foto_lama', true);
-		$id_asesi = $this->input->post('id', true);
-		$id_user = $this->input->post('id_user', true);
-		$cekNopes = $this->Masesi->cekNopesU($no_met, $id_asesi);
-		$nama = $this->input->post('nama', true);
-		$username = $this->input->post('username', true);
-		$cekUsername = $this->Masesi->cekUsernameU($username, $id_user);
-		$password = $this->input->post('password', true);
-		$password2 = $this->input->post('password2', true);
-		if ($password === $password2) {
-			$password = md5($password);
-		} else {
-			$password = "tidaksesuai";
-		}
-
-		if ($cekNopes == 'kosong') {
-			if ($cekUsername == 'kosong') {
-				if ($password != 'tidaksesuai') {
-					$config['upload_path']          = './assets/img/asesi/';
-					$config['allowed_types']        = 'gif|jpg|png|jpeg';
-					$config['max_size']             = 1024;
-					$config['max_width']            = 6000;
-					$config['max_height']           = 6000;
-					$config['overwrite'] = TRUE;
-					$config['remove_spaces'] = TRUE;
-					$config['encrypt_name'] = TRUE;
-					$this->upload->initialize($config);
-					if ($this->upload->do_upload('foto')) {
-						$foto = $this->upload->data('file_name');
-						if ($foto_lama != "noimage.png") {
-							unlink('./assets/img/asesi/' . $foto_lama);
-						}
-					} else {
-						$foto = $foto_lama;
-					}
-					if ($this->input->post('password', true) == "") {
-						$data2 = array(
-							'username' => $username,
-							'nama' => $nama
-						);
-					} else {
-						$data2 = array(
-							'username' => $username,
-							'nama' => $nama,
-							'password' => $password
-						);
-					}
-					$this->Masesi->edituser($data2, $id_user);
-					$data = array(
-						'no_peserta' => $no_peserta,
-						'nama' => $nama,
-						'kelas' => $kelas,
-						'tahun_aktif' => $tahun_aktif,
-						'foto' => $foto
-					);
-					$this->Masesi->editasesi($data, $id_asesi);
-					$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
-					<strong>Sukses!</strong> Berhasil Mengubah Data Asesi.
-															</div>');
-					redirect(base_url('asesi'));
-				} else {
-					$this->session->set_flashdata('alert', '<div class="alert alert-danger left-icon-alert" role="alert">
-		                                            		<strong>Gagal!</strong> Mohon periksa kembali Konfirmasi Kata Sandi.
-		                                        		</div>');
-					redirect(base_url('asesi/ubah/' . $id_asesi));
-				}
-			} else {
-				$this->session->set_flashdata('alert', '<div class="alert alert-warning left-icon-alert" role="alert">
-		                                            		<strong>Gagal!</strong> Nama Pengguna ' . $username . ' sudah ada, Coba lagi.
-		                                        		</div>');
-				redirect(base_url('asesi/ubah/' . $id_asesi));
-			}
+		$rombel = $this->input->post('rombel', true);
+		$rombel_lama = $this->input->post('rombel_lama', true);
+		$cekRombel = $this->Mrombel->cekRombel($rombel);
+		if ($cekRombel == 'kosong') {
+			$data = array(
+				'rombel' => $rombel
+			);
+			$this->Mrombel->editrombel($data, $rombel_lama);
+			$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
+																<strong>Sukses!</strong> Berhasil Menambahkan Data Rombel.
+																</div>');
+			redirect(base_url('rombel'));
 		} else {
 			$this->session->set_flashdata('alert', '<div class="alert alert-warning left-icon-alert" role="alert">
-			<strong>Gagal!</strong> Sudah Ada Asesi yang mempunyai No MET yang sama.
-													</div>');
-			redirect(base_url('asesi/ubah/' . $id_asesi));
+			<strong>Gagal!</strong> Sudah Ada Rombel Tersebut.
+			</div>');
+			redirect(base_url('rombel/tambah'));
 		}
 	}
 
