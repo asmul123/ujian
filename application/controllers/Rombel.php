@@ -67,21 +67,6 @@ class Rombel extends CI_Controller
 		redirect(base_url('asesi'));
 	}
 
-	public function detail($idasesi)
-	{
-		$id = $this->session->userdata('tipeuser');
-		$data['menu'] = $this->M_Setting->getmenu1($id);
-		$data['dataasesi'] = $this->Masesi->getasesidetail($idasesi);
-		$data['akses'] = $this->M_Akses->getByLinkSubMenu(urlPathDet(), $id);
-		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Asesi'])->row()->id_menus;
-
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar', $data);
-		$this->load->view('v_asesi/v_asesi-detail', $data);
-		$this->load->view('template/footer');
-		// print_r($this->M_Siswa->getsiswadetail($nis));
-	}
-
 	public function tambah()
 	{
 		$id = $this->session->userdata('tipeuser');
@@ -91,92 +76,35 @@ class Rombel extends CI_Controller
 
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar', $data);
-		$this->load->view('v_asesi/v_asesi-add', $data);
+		$this->load->view('v_rombel/v_rombel-add', $data);
 		$this->load->view('template/footer');
 	}
 
 	public function add_process()
 	{
-		$no_peserta = $this->input->post('no_peserta', true);
-		$cekNopes = $this->Masesi->cekNopes($this->input->post('no_peserta', true));
-		$nama = $this->input->post('nama', true);
-		$kelas = $this->input->post('kelas', true);
-		$tahun_aktif = $this->input->post('tahun_aktif', true);
-		$username = $this->input->post('username', true);
-		$cekUsername = $this->Masesi->cekUsername($this->input->post('username', true));
-		$password = $this->input->post('password', true);
-		$password2 = $this->input->post('password2', true);
-		if ($password === $password2) {
-			$password = md5($password);
-		} else {
-			$password = "tidaksesuai";
-		}
-
-		if ($cekNopes == 'kosong') {
-			if ($cekUsername == 'kosong') {
-				if ($password != 'tidaksesuai') {
-					$config['upload_path']          = './assets/img/asesi/';
-					$config['allowed_types']        = 'gif|jpg|png|jpeg';
-					$config['max_size']             = 1024;
-					$config['max_width']            = 6000;
-					$config['max_height']           = 6000;
-					$config['overwrite'] = TRUE;
-					$config['remove_spaces'] = TRUE;
-					$config['encrypt_name'] = TRUE;
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload('foto')) {
-						$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">' . $this->upload->display_errors() . '</div>');
-						$foto = "noimage.png";
-					} else {
-						$foto = $this->upload->data('file_name');
-					}
-					$data2 = array(
-						'username' => $username,
-						'nama' => $nama,
-						'password' => $password,
-						'user_level' => '3'
-					);
-					$this->Masesi->adduser($data2);
-					$user = $this->Masesi->cekIdUser($username);
-					$data = array(
-						'no_peserta' => $no_peserta,
-						'nama' => $nama,
-						'kelas' => $kelas,
-						'foto' => $foto,
-						'id_user' => $user->id,
-						'tahun_aktif' => $tahun_aktif
-					);
-					$this->Masesi->addasesi($data);
-					$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
-																<strong>Sukses!</strong> Berhasil Menambahkan Data Asesi.
+		$rombel = $this->input->post('rombel', true);
+		$cekRombel = $this->Mrombel->cekRombel($rombel);
+		if ($cekRombel == 'kosong') {
+			$data = array(
+				'rombel' => $rombel
+			);
+			$this->Mrombel->addrombel($data);
+			$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
+																<strong>Sukses!</strong> Berhasil Menambahkan Data Rombel.
 																</div>');
-					redirect(base_url('asesi'));
-				} else {
-					$this->session->set_flashdata('alert', '<div class="alert alert-danger left-icon-alert" role="alert">
-		                                            		<strong>Gagal!</strong> Mohon periksa kembali Konfirmasi Kata Sandi.
-		                                        		</div>');
-					redirect(base_url('asesi/tambah'));
-				}
-			} else {
-				$this->session->set_flashdata('alert', '<div class="alert alert-warning left-icon-alert" role="alert">
-		                                            		<strong>Gagal!</strong> Nama Pengguna sudah ada, Coba lagi.
-		                                        		</div>');
-				redirect(base_url('asesi/tambah'));
-			}
+			redirect(base_url('rombel'));
 		} else {
 			$this->session->set_flashdata('alert', '<div class="alert alert-warning left-icon-alert" role="alert">
-			<strong>Gagal!</strong> Sudah Ada Asesi yang mempunyai No MET yang sama.
+			<strong>Gagal!</strong> Sudah Ada Rombel Tersebut.
 			</div>');
-			redirect(base_url('asesi/tambah'));
+			redirect(base_url('rombel/tambah'));
 		}
 	}
 
-	public function hapus($id, $iduser)
+	public function hapus($id)
 	{
 
-		$this->Masesi->hapusfoto($id);
-		$this->Masesi->delasesi($id);
-		$this->Masesi->deluser($iduser);
+		$this->Mrombel->delrombel($id);
 		$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
 		<strong>Sukses!</strong> Berhasil Menghapus Data Asesor.
                                         		</div>');

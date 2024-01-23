@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="navbar-header no-padding">
-                        <a class="navbar-brand" href="<?php echo base_url() ?>">UJIAN - SMK NEGERI 1 GARUT
+                        <a class="navbar-brand" href="<?php echo base_url() ?>">UJIAN - SMK YPPT GARUT
                         </a>
                         <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
                         <button class="navbar-toggle collapsed" aria-expanded="false" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">

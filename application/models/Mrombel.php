@@ -46,10 +46,10 @@ class Mrombel extends CI_Model
         return $query;
     }
 
-    function delasesi($id)
+    function delrombel($id)
     {
-        $this->db->where('id', $id);
-        $this->db->delete('tb_asesi');
+        $this->db->where('rombel', $id);
+        $this->db->delete('tb_rombel');
     }
 
     function deluser($id)
