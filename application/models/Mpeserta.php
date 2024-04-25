@@ -18,6 +18,17 @@ class Mpeserta extends CI_Model
         return $query->row_array();
     }
 
+    function getserver($id)
+    {
+        $this->db->select('link_server');
+        $this->db->from('tb_server');
+        $this->db->join('tb_ruang', 'tb_server.id = tb_ruang.id_server');
+        $this->db->join('tb_peserta', 'tb_ruang.ruang = tb_peserta.ruang');
+        $this->db->where('tb_peserta.id_user', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     function getNilaiPeserta($id, $soal)
     {
         $this->db->select('nilai');
