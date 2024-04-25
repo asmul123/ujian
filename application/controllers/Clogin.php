@@ -8,6 +8,7 @@ class Clogin extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('Mlogin');
+		$this->load->model('Mpeserta');
 		$this->load->library('session');
 	}
 
