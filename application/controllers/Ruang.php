@@ -29,11 +29,17 @@ class Ruang extends CI_Controller
 		$data['dataruang'] = $this->Mruang->getruang();
 		$data['akses'] = $this->M_Akses->getByLinkSubMenu(urlPath(), $id);
 		$data['activeMenu'] = $this->db->get_where('tb_submenu', ['submenu' => 'Data Ruang'])->row()->id_menus;
-
+		
 		$this->load->view('template/header');
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('v_ruang/v_ruang', $data);
 		$this->load->view('template/footer');
+	}
+	
+	public function daftar_ruang()
+	{
+		$data['dataruang'] = $this->Mruang->getruangserver();
+		$this->load->view('v_ruang/v_daftar-ruang',$data);
 	}
 
 	public function generateakun()

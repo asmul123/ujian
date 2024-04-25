@@ -10,6 +10,14 @@ class Mruang extends CI_Model
         return $this->db->get()->result();
     }
 
+    function getruangserver()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_ruang');
+        $this->db->join('tb_server', 'tb_ruang.id_server = tb_server.id');
+        return $this->db->get()->result();
+    }
+
     function getasesidetail($id)
     {
         $this->db->select('*, tb_asesi.id as idas');
