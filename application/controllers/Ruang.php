@@ -38,7 +38,7 @@ class Ruang extends CI_Controller
 	
 	public function daftar_ruang($kode)
 	{
-		if($kode == '$2y$12$pnf/1QaPcRrAvXP1Rxe9J.LJFqMVhn5kRQOVp3eYc91jKIZa4HZlK'){
+		if($kode == '1QaPcRrAvXP1Rxe9J.LJFqMVhn5kRQOVp3eYc91jKIZa4HZlK'){
 			$session = array(
 				'login' => true
 			);
