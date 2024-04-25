@@ -76,30 +76,4 @@ class Msoal extends CI_Model
         $this->db->update('tb_ia_05', $data);
     }
 
-    function repair_skema()
-    {
-        $no = 0;
-        $gagal = 0;
-        $this->db->select('*');
-        $this->db->from('tb_ia_05');
-        $query = $this->db->get()->result_array();
-        if ($query) {
-            foreach ($query as $q) :
-                // echo $q['id_unit'] . "<br>";
-                $this->db->select('id_skema');
-                $this->db->from('tb_unit');
-                $this->db->where('id', ($q['id_unit']));
-                $r = $this->db->get()->row_array();
-                $data = array(
-                    'id_skema' => $r['id_skema']
-                );
-                $this->db->where('id', $q['id']);
-                $this->db->update('tb_ia_05', $data);
-                $no++;
-            endforeach;
-        } else {
-            $gagal++;
-        }
-        return "berhasil memperbaharui : " . $no . " data, gagal : " . $gagal . " data";
-    }
 }

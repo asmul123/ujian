@@ -29,9 +29,14 @@
                                     <div class="panel-body">
                                         <table>
                                             <tr>
+                                                <td>Kode Soal</td>
+                                                <td>:</td>
+                                                <td><?= $data_test->kode_soal ?></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Mata Pelajaran</td>
                                                 <td>:</td>
-                                                <td><?= $data_test->judul_soal ?></td>
+                                                <td><?= $data_test->mata_pelajaran ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Durasi</td>

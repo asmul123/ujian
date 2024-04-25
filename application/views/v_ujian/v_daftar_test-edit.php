@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Daftar Test Ujian Sekolah</h2>
-                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN - SMKN 1 GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -60,7 +60,7 @@
                                                     ?>
                                                         <option value="<?= $data->id ?>" <?php if ($daftartest->id_soal == $data->id) {
                                                                                                 echo "selected";
-                                                                                            } ?>><?= $data->judul_soal ?></option>
+                                                                                            } ?>><?= $data->kode_soal ?> | <?= $data->mata_pelajaran ?></option>
                                                     <?php }
                                                     ?>
                                                 </select>

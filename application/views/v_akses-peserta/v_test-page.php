@@ -33,16 +33,20 @@
                                             $es = explode('#', $rekaman);
                                             $akhir = count($es);
                                             $ia = explode('-', $es[$no]);
+                                            $jmluraian = count($ia);
                                             $soal = $this->Msoal->getPertanyaan($ia[0]);
-                                            $jw = explode('#_#', $soal->jawaban);
+                                            $jw = explode('[#_#]', $soal->jawaban);
                                             ?>
                                             <input type="hidden" name="soal" value="<?= $ia[0] ?>">
                                             <input type="hidden" name="no_soal" value="<?= $no ?>">
                                             <p>
                                             <h5><?= $soal->pertanyaan ?></h5>
                                             </p>
-                                            <?php for ($j = 1; $j <= 5; $j++) {
-                                                $jawaban = explode("_#_", $jw[$j]);
+                                            <?php
+                                            if($soal->id_jenissoal==1){
+                                            ?>
+                                            <?php for ($j = 0; $j <= 4; $j++) {
+                                                $jawaban = explode("[_#_]", $jw[$j]);
                                                 if ($jawaban[1] != "") {
                                             ?>
                                                     <table width="100%">
@@ -54,16 +58,33 @@
                                                         </tr>
                                                     </table>
                                             <?php }
-                                            } ?>
-
+                                            } 
+                                        } else if ($soal->id_jenissoal==3){
+                                            ?>
+                                            <textarea class="textarea" name="jawaban" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                            <?php 
+                                            if($ia[1]!=0){ 
+                                                if($jmluraian>2){
+                                                    $ju = $ia[1];
+                                                    for($j=2;$j<$jmluraian;$j++){
+                                                        $ju = $ju."-".$ia[$j];
+                                                    }
+                                                    echo $ju;
+                                                } else {
+                                                    echo $ia[1];
+                                                } 
+                                            }
+                                            ?>
+                                        </textarea>
                                             <?php
+                                        }
                                             if ($no != 1) {
                                             ?>
-                                                <button type="submit" class="btn btn-primary" value="<?= $no - 1 ?>" name="no">
+                                                <button type="submit" class="btn btn-primary mb-3" value="<?= $no - 1 ?>" name="no">
                                                     < Sebelumnya</button>
                                                     <?php } else {
                                                     ?>
-                                                        <button class="btn btn-primary" disabled>
+                                                        <button class="btn btn-primary mb-3" disabled>
                                                             < Sebelumnya</button>
                                                             <?php
                                                         }

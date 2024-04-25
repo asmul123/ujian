@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Edit Kop Surat</h2>
-                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN - SMKN 1 GARUT</p>
             </div>
             <div class="row">
                 <div class="col-lg-9">

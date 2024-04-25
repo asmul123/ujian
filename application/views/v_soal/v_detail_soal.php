@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">DETAIL SOAL</h2>
-                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN - SMKN 1 GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -106,14 +106,16 @@
                                             <td class="text-center">
                                                 <ol type="a">
                                                     <?php
-                                                    $op = explode("#_#", $s->jawaban);
-                                                    for ($i = 1; $i <= 5; $i++) {
-                                                        $isiop = explode("_#_", $op[$i]);
+                                                    $op = explode("[#_#]", $s->jawaban);
+                                                    $lb = 'A';
+                                                    for ($i = 0; $i <= 4; $i++) {
+                                                        $isiop = explode("[_#_]", $op[$i]);
                                                         echo "<li>" . $isiop['1'] . " ";
-                                                        if ($s->kunci == $i) {
+                                                        if ($s->kunci == $lb) {
                                                             echo "&#10004;";
                                                         }
                                                         echo "</li>";
+                                                        $lb++;
                                                     } ?>
                                                 </ol>
                                             </td>

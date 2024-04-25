@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">DAFTAR SOAL</h2>
-                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN - SMKN 1 GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -53,7 +53,8 @@
                                         </div>
                                         <form action="<?= base_url('soal/tambah') ?>" method="POST">
                                             <div class="modal-body">
-                                                <textarea name="judul_soal" class="form-control" placeholder="Masukan Judul Soal"></textarea>
+                                                <input type="text" name="kode_soal" class="form-control" placeholder="Masukan Kode Soal">
+                                                <textarea name="mata_pelajaran" class="form-control" placeholder="Masukan Mata Pelajaran"></textarea>
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="btn-group" role="group">
@@ -70,7 +71,8 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">No</th>
-                                        <th class="text-center">Judul Soal</th>
+                                        <th class="text-center">Kode Soal</th>
+                                        <th class="text-center">Mata Pelajaran</th>
                                         <th class="text-center">Jumlah Soal</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
@@ -82,7 +84,8 @@
                                     ?>
                                         <tr>
                                             <td class="text-center"><?= $no++ ?></td>
-                                            <td><?= $s->judul_soal ?></td>
+                                            <td><?= $s->kode_soal ?></td>
+                                            <td><?= $s->mata_pelajaran ?></td>
                                             <td class="text-center"><?php
                                                                     echo $this->Msoal->getQSoal($s->id)->jml;
                                                                     ?></td>

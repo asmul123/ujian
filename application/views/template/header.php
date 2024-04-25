@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UJIAN SMKS YPPT GARUT</title>
+    <title>UJIAN SMKN 1 GARUT</title>
     <link rel="shortcut icon" href="<?php echo base_url() ?>assets/Favicon/favicon.ico">
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/Theme/css/bootstrap.min.css" media="screen">
@@ -50,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="navbar-header no-padding">
-                        <a class="navbar-brand" href="<?php echo base_url() ?>">UJIAN - SMK YPPT GARUT
+                        <a class="navbar-brand" href="<?php echo base_url() ?>">UJIAN - SMKN 1 GARUT
                         </a>
                         <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
                         <button class="navbar-toggle collapsed" aria-expanded="false" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">

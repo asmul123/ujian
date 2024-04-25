@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Daftar Test Ujian Sekolah</h2>
-                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN - SMKN 1 GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -40,9 +40,14 @@
                                 <h5>Daftar Test Ujian Sekolah</h5>
                                 <table width="100%" cellpadding="4" cellspacing="4" border="1">
                                     <tr>
+                                        <td>Kode Soal</td>
+                                        <td>:</td>
+                                        <td><?= $datatest->kode_soal ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Nama Mapel</td>
                                         <td>:</td>
-                                        <td><?= $datatest->judul_soal ?></td>
+                                        <td><?= $datatest->mata_pelajaran ?></td>
                                     </tr>
                                     <tr>
                                         <td>Ruang</td>

@@ -3,7 +3,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Daftar Test Ujian Sekolah</h2>
-                <p class="sub-title">UJIAN - SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN - SMKN 1 GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">
@@ -45,6 +45,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">No</th>
+                                        <th class="text-center">Kode Soal</th>
                                         <th class="text-center">Mata Pelajaran</th>
                                         <th class="text-center">Durasi</th>
                                         <th class="text-center">Waktu Mulai</th>
@@ -59,7 +60,8 @@
                                     ?>
                                         <tr>
                                             <td class="text-center"><?= $no++; ?></td>
-                                            <td><?= $data->judul_soal ?></td>
+                                            <td><?= $data->kode_soal ?></td>
+                                            <td><?= $data->mata_pelajaran ?></td>
                                             <td><?= $data->durasi ?></td>
                                             <td><?= $data->start_at ?></td>
                                             <td><?= $data->finish_at ?></td>

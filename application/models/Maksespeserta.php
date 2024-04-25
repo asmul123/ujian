@@ -43,6 +43,7 @@ class Maksespeserta extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_soal_detail');
         $this->db->where('id_soal', $id);
+        $this->db->order_by('id_jenissoal', 'ASC');
         if ($rand != null) {
             $this->db->order_by('id', 'RANDOM');
         }

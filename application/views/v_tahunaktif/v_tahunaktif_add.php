@@ -4,7 +4,7 @@
         <div class="row page-title-div">
             <div class="col-sm-6">
                 <h2 class="title">Tahun Aktif</h2>
-                <p class="sub-title">UJIAN SMKS YPPT GARUT</p>
+                <p class="sub-title">UJIAN SMKN 1 GARUT</p>
             </div>
             <!-- /.col-sm-6 -->
             <!-- <div class="col-sm-6 right-side">

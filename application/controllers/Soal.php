@@ -109,9 +109,11 @@ class Soal extends CI_Controller
 
 	public function tambah()
 	{
-		$judul_soal = $this->input->post('judul_soal', true);
+		$kode_soal = $this->input->post('kode_soal', true);
+		$mata_pelajaran = $this->input->post('mata_pelajaran', true);
 		$data = array(
-			'judul_soal' => $judul_soal
+			'kode_soal' => $kode_soal,
+			'mata_pelajaran' => $mata_pelajaran
 		);
 		$this->Msoal->addSoal($data);
 		$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
@@ -122,10 +124,12 @@ class Soal extends CI_Controller
 
 	public function ubah()
 	{
-		$judul_soal = $this->input->post('judul_soal', true);
+		$kode_soal = $this->input->post('kode_soal', true);
+		$mata_pelajaran = $this->input->post('mata_pelajaran', true);
 		$id_soal = $this->input->post('id_soal', true);
 		$data = array(
-			'judul_soal' => $judul_soal
+			'kode_soal' => $kode_soal,
+			'mata_pelajaran' => $mata_pelajaran
 		);
 		$this->Msoal->ubahSoal($data, $id_soal);
 		$this->session->set_flashdata('alert', '<div class="alert alert-success left-icon-alert" role="alert">
