@@ -65,7 +65,6 @@ class Clogin extends CI_Controller
 
 	function maps_login($username, $password)
 	{
-		$this->session->sess_destroy();
 		$user = $this->Mlogin->get($username, $password);
 		if($user){
 			$server = $this->Mpeserta->getserver($user->id)->link_server;
@@ -78,8 +77,6 @@ class Clogin extends CI_Controller
 
 	function fast_login($username, $password)
 	{
-		$this->Mlogin->logout();
-		$this->session->sess_destroy();
 		$user = $this->Mlogin->get($username, $password);
 
 		if (empty($user)) {
