@@ -160,6 +160,7 @@
                                         <th class="text-center">Durasi</th>
                                         <th class="text-center">Waktu Mulai</th>
                                         <th class="text-center">Waktu Akhir</th>
+                                        <th class="text-center">Token</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -176,6 +177,7 @@
                                             <td><?= $data['durasi'] ?></td>
                                             <td><?= $data['start_at'] ?></td>
                                             <td><?= $data['finish_at'] ?></td>
+                                            <td><?= $data['token'] ?></td>
                                             <td style="min-width: 110px">
                                                 <div class="btn-group">
                                                     <a href="<?= base_url('test/list_test/') . $data['idtest'] ?>" class="btn btn-success"><i class="fa fa-list"></i></a>

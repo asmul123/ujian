@@ -8,6 +8,7 @@ class Fastlog extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('Mlogin');
+		$this->load->model('Mruang');
 		$this->load->library('session');
 	}
 
@@ -31,13 +32,23 @@ class Fastlog extends CI_Controller
 			$this->Mlogin->userlog();
 			redirect('welcome'); // Redirect ke halaman welcome
 			// }else{
-			// $this->session->set_flashdata('message', 'Password salah'); // Buat session flashdata
-			//     echo "<script>
-			// 		alert('Password salah');history.go(-1);
-			// 	</script>";
+				// $this->session->set_flashdata('message', 'Password salah'); // Buat session flashdata
+				//     echo "<script>
+				// 		alert('Password salah');history.go(-1);
+				// 	</script>";
 			//     // redirect('C_Login'); 
 			//     // Redirect ke halaman login
 			// }
+		}
+	}
+	
+	public function daftar_ruang($kode = NULL)
+	{
+		if($kode == '1QaPcRrAvXP1Rxe9J.LJFqMVhn5kRQOVp3eYc91jKIZa4HZlK'){
+			$data['dataruang'] = $this->Mruang->getruangserver();
+			$this->load->view('v_ruang/v_daftar-ruang',$data);
+		} else {
+			redirect('welcome'); // Redirect ke halaman welcome			
 		}
 	}
 }
