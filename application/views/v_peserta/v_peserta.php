@@ -67,7 +67,8 @@
                                         <th class="text-center">Nama Lengkap</th>
                                         <th class="text-center">Rombel</th>
                                         <th class="text-center">Ruang</th>
-                                        <th class="text-center">Akun</th>
+                                        <th class="text-center">Test Diikuti</th>
+                                        <th class="text-center">Test Selesai</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -82,15 +83,13 @@
                                             <td><?= $data->ruang; ?></td>
                                             <td>
                                                 <?php
-                                                $cekakun = $this->Mpeserta->cekAkun($data->id_user);
-                                                if ($cekakun == "kosong") {
+                                                echo $this->Mujian->getTestCount($data->id);
                                                 ?>
-                                                    <a href="<?= base_url() ?>peserta/akun/<?= $data->id; ?>" class="btn btn-danger">Tidak Aktif</a>
+                                            </td>
+                                            <td>
                                                 <?php
-                                                } else {
+                                                echo $this->Mujian->getTestCountF($data->id);
                                                 ?>
-                                                    <button class="btn btn-success">Aktif</button>
-                                                <?php } ?>
                                             </td>
                                             <td style="min-width: 175px;">
                                                 <center>

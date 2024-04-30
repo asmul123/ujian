@@ -30,6 +30,23 @@ class Mujian extends CI_Model
         return $query->result_array();
     }
 
+    function getTestCount($idpeserta)
+    {
+        $this->db->select('count(id) as jml');
+        $this->db->where('id_peserta', $idpeserta);
+        $query = $this->db->get('tb_status_test');
+        return $query->row()->jml;
+    }
+
+    function getTestCountF($idpeserta)
+    {
+        $this->db->select('count(id) as jml');
+        $this->db->where('id_peserta', $idpeserta);
+        $this->db->where('status_test', '2');
+        $query = $this->db->get('tb_status_test');
+        return $query->row()->jml;
+    }
+
     function getTestRuang($ruang)
     {
         $this->db->select('*, tb_daftar_test.id as idtest');

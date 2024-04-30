@@ -17,6 +17,7 @@ class Peserta extends CI_Controller
 		$this->load->library('session');
 		$this->load->model('M_Setting');
 		$this->load->model('Mpeserta');
+		$this->load->model('Mujian');
 		$this->load->model('Mtahunaktif');
 		$this->load->model('M_Akses');
 
